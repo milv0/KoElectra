@@ -11,3 +11,5 @@ checkpoint -> 학습된 모델
 
 
 채팅 하려면 ipynb 파일 실행하면 됨
+
+모델 / txt 파일 -> Google drive
