@@ -8,7 +8,7 @@ from transformers import ElectraModel, ElectraTokenizer
 class WellnessTextClassificationDataset(Dataset):
     def __init__(self,
                  ## train_electra.py도 같이 수정!!!!
-                 file_path="/workspace/kobert-wellness-chatbot/data/input_v4.txt", 
+                 file_path="/workspace/kobert-wellness-chatbot/data/input_v6.txt", 
                  num_label=432,
                  device='cuda',
                  max_seq_len=512,  # KoBERT max_length
@@ -18,6 +18,8 @@ class WellnessTextClassificationDataset(Dataset):
         self.device = device
         self.data = []
         self.tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-generator")
+        # self.tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discriminator")
+
 
         with open(self.file_path, 'r', encoding='utf-8') as file:
             for line_num, line in enumerate(file, start=1):
