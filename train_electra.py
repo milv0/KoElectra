@@ -12,12 +12,9 @@ from torch.utils.data import dataloader
 from tqdm import tqdm
 # from transformers import AdamW
 
-# from model.classifier import KoBERTforSequenceClassfication
-# from model.dataloader import WellnessTextClassificationDataset
-
+#koElectra
 from model.classifier_electra import KoELECTRAforSequenceClassfication
 from model.dataloader_electra import WellnessTextClassificationDataset
-#koElectra
 from transformers import AdamW, ElectraConfig
 
 os.environ["CUDA_DEVICE_ORDER"]="PCI_BUS_ID"  
@@ -67,9 +64,9 @@ if __name__ == '__main__':
     torch.cuda.empty_cache()
 
     root_path = "."
-    data_path = f"{root_path}/data/input_v4.txt" ## dataloader.py도 같이 수정!!!!!
+    data_path = f"{root_path}/data/input_v6.txt" ## dataloader.py도 같이 수정!!!!!
     checkpoint_path = f"{root_path}/checkpoint"
-    save_ckpt_path = f"{checkpoint_path}/model_electra_v2.pth"
+    save_ckpt_path = f"{checkpoint_path}/model_electra_v6.pth" ## model version 숫자 바꾸기!!!!
 
     n_epoch = 50  # Num of Epoch
     batch_size = 8
@@ -84,6 +81,8 @@ if __name__ == '__main__':
 
     #koElectra_config
     model_config = ElectraConfig.from_pretrained("monologg/koelectra-base-v3-generator")
+    # model_config = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discriminator")
+
 
     # model = KoBERTforSequenceClassfication()
     model = KoELECTRAforSequenceClassfication(model_config, num_labels=432, hidden_dropout_prob=0.1)

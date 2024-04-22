@@ -21,7 +21,7 @@ logging.getLogger("transformers").setLevel(logging.ERROR)
 def load_wellness_answer():
     root_path = "."
     category_path = f"{root_path}/data/category.txt"
-    answer_path = f"{root_path}/data/answer_v2.txt"
+    answer_path = f"{root_path}/data/answer_v6.txt"
 
     c_f = open(category_path, 'r')
     a_f = open(answer_path, 'r')
@@ -71,7 +71,7 @@ if __name__ == "__main__":
     checkpoint_path = f"{root_path}/checkpoint"
     
     ### 모델 ###
-    save_ckpt_path = f"{checkpoint_path}/model_electra.pth"
+    save_ckpt_path = f"{checkpoint_path}/model_electra_v6.pth"
     ### 수정 ###
 
 
@@ -86,6 +86,7 @@ if __name__ == "__main__":
 
     #koElectra_config
     model_config = ElectraConfig.from_pretrained("monologg/koelectra-base-v3-generator")
+    # model_config = ElectraConfig.from_pretrained("monologg/koelectra-base-v3-discriminator")
 
     model = KoELECTRAforSequenceClassfication(model_config, num_labels=432, hidden_dropout_prob=0.1)
     
@@ -95,6 +96,7 @@ if __name__ == "__main__":
     model.eval()
 
     tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-generator")
+    # tokenizer = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discriminator")
 
 
 
