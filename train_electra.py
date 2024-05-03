@@ -3,14 +3,11 @@ import os
 import logging
 import numpy as np
 import torch
-
 from datetime import datetime, timedelta
 import time
-
 from torch.optim import AdamW
 from torch.utils.data import dataloader
 from tqdm import tqdm
-# from transformers import AdamW
 
 #koElectra
 from model.classifier_electra import KoELECTRAforSequenceClassfication
@@ -64,9 +61,9 @@ if __name__ == '__main__':
     torch.cuda.empty_cache()
 
     root_path = "."
-    data_path = f"{root_path}/data/input_v6.txt" ## dataloader.py도 같이 수정!!!!!
+    data_path = f"{root_path}/YOUR/DATA/PATH/input.txt" 
     checkpoint_path = f"{root_path}/checkpoint"
-    save_ckpt_path = f"{checkpoint_path}/model_electra_v6.pth" ## model version 숫자 바꾸기!!!!
+    save_ckpt_path = f"{checkpoint_path}/model_electra_v6.pth" 
 
     n_epoch = 50  # Num of Epoch
     batch_size = 8
@@ -81,10 +78,8 @@ if __name__ == '__main__':
 
     #koElectra_config
     model_config = ElectraConfig.from_pretrained("monologg/koelectra-base-v3-generator")
-    # model_config = ElectraTokenizer.from_pretrained("monologg/koelectra-base-v3-discriminator")
 
-
-    # model = KoBERTforSequenceClassfication()
+    # model = KoELECTRAforSequenceClassfication()
     model = KoELECTRAforSequenceClassfication(model_config, num_labels=432, hidden_dropout_prob=0.1)
 
     model.to(device)
