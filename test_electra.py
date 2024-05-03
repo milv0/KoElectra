@@ -74,7 +74,6 @@ if __name__ == "__main__":
     save_ckpt_path = f"{checkpoint_path}/model_electra_v6.pth"
     ### 수정 ###
 
-
     # 답변과 카테고리 불러오기
     category, answer = load_wellness_answer()
 
@@ -86,7 +85,6 @@ if __name__ == "__main__":
 
     #koElectra_config
     model_config = ElectraConfig.from_pretrained("monologg/koelectra-base-v3-generator")
-    # model_config = ElectraConfig.from_pretrained("monologg/koelectra-base-v3-discriminator")
 
     model = KoELECTRAforSequenceClassfication(model_config, num_labels=432, hidden_dropout_prob=0.1)
     
@@ -133,7 +131,6 @@ if __name__ == "__main__":
             answer_list = answer[category[str(max_index)]]
             answer_len = len(answer_list) - 1
             answer_index = random.randint(0, answer_len)
-            # print(f'Answer: {answer_list[answer_index]}, index: {max_index}, softmax_value: {max_index_value}')
             print(f'Answer: {answer_list[answer_index]} \nindex: {answer_category} \nsoftmax_value: {max_index_value}')
 
             print('-' * 70)
