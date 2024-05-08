@@ -1,4 +1,4 @@
-# KoElectra 챗봇
+# KoElectra 심리상담챗봇
 
 kobert --> KoElectra
 
